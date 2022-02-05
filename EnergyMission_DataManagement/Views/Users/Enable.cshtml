@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit User - Enable / Disable User</h2>
+@model Microsoft.AspNetCore.Identity.IdentityUser
+@using (Html.BeginForm())
+{
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div> Please uncheck the below check box and click on save to enable the user in the system</div>
+    <br />
+    <div> or Please check the below check box and click on save if you want to disable the user in the system </div>
+    <br />
+    <div class="form-group" style="">
+       
+        <b>
+            @Html.DisplayFor(model => model.UserName)
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LockoutEnabled, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+        </b>
+</div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "UserManagement")
+</div>

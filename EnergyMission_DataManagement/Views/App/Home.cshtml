@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "HomePage";
+}
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
+}
+<center>
+    <br />
+    <h1> Welcome to Energy Mission Data Management Portal </h1>
+    <br />
+    <span style="font-size:13px">Logged in as: </span><span style="color:cornflowerblue; font-size:13px"> @User.Identity.Name </span>
+    <br />
+    <br />
+    <div class="product-info">
+        <button class="btn btn-light"><a asp-controller="Users" asp-action="UserManagement" class="nav-link" style="color:rebeccapurple; font-size:20px; font-weight:bold">User Management &nbsp;<i class="fas fa-users"></i></a></button>
+        <button class="btn btn-light"><a asp-controller="Contract" asp-action="ContractManagement" class="nav-link" style="color: green; font-size:20px; font-weight: bold">Contract Management &nbsp;<i class="fas fa-file-alt"></i></a></button>
+        <br />
+        <br />
+        <button class="btn btn-light"><a asp-controller="CAC" asp-action="CACManagement" class="nav-link" style="color: orangered; font-size: 20px; font-weight: bold">CAC Management &nbsp;<i class="fas fa-user-edit"></i></a></button>
+        <button class="btn btn-light"><a asp-controller="NMI" asp-action="NMIManagement" class="nav-link" style="color: salmon; font-size: 20px; font-weight: bold">NMI Management &nbsp;<i class="fas fa-plug"></i></a></button>
+        <br />
+        <br />
+        <button class="btn btn-light"><a asp-controller="OpsHistory" asp-action="OpsHistManagement" class="nav-link" style="color: chocolate; font-size: 20px; font-weight: bold">Operations History &nbsp;<i class="fas fa-user-clock"></i></a></button>
+    </div>
+</center>

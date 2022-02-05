@@ -1,0 +1,95 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model NewContractViewModel
+@{
+    ViewBag.Title = "New Contract Page";
+}
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="col-md-6 offset-md-3">
+    <div class="card card-body">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="Contract_number">Contract ID:</label>
+                    <input asp-for="Contract_number" type="text" class="form-control">
+                    <span asp-validation-for="Contract_number"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="NMI_number">NMI:</label>
+                    <input asp-for="NMI_number" type="text" class="form-control">
+                    <span asp-validation-for="NMI_number"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="Jusridiction">Jusrisdiction:</label>
+                    <input asp-for="Jusridiction" type="text" class="form-control">
+                    <span asp-validation-for="Jusridiction"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="Distributor">Distributor:</label>
+                    <input asp-for="Distributor" type="text" class="form-control">
+                    <span asp-validation-for="Distributor"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="MeterType">Meter Type:</label>
+                    <input asp-for="MeterType" type="text" class="form-control">
+                    <span asp-validation-for="MeterType"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="OrderNumber">OrderNumber:</label>
+                    <input asp-for="OrderNumber" type="text" class="form-control">
+                    <span asp-validation-for="OrderNumber"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="StartOfDeliveryDate">Start of Delivery:</label>
+                    <input asp-for="StartOfDeliveryDate" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control">
+                    <span asp-validation-for="StartOfDeliveryDate"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="PaymentReferenceNumber">Payment Reference Number:</label>
+                    <input asp-for="PaymentReferenceNumber" type="text" class="form-control">
+                    <span asp-validation-for="PaymentReferenceNumber"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="MeterSerialNumber">Meter Serial Number:</label>
+                    <input asp-for="MeterSerialNumber" type="text" class="form-control">
+                    <span asp-validation-for="MeterSerialNumber"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="MeterReads">Meter Reads:</label>
+                    <input asp-for="MeterReads" type="text" class="form-control">
+                    <span asp-validation-for="MeterReads"></span>
+                </div>
+            </div>
+            <br>
+            <div class="col-md-12 col-lg-12 col-xs-12">
+                <button type="submit" class="btn btn-warning">Submit</button>
+                <div>@ViewBag.UserMessage</div>
+            </div>
+        </form>
+    </div>

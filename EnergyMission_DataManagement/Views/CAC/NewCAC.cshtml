@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model CACViewModel
+@{
+    ViewBag.Title = "New CAC Page";
+}
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="col-md-6 offset-md-3">
+    <div class="card card-body">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="CAC_number">CAC ID:</label>
+                    <input asp-for="CAC_number" type="text" class="form-control">
+                    <span asp-validation-for="CAC_number"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="NMI_number">NMI:</label>
+                    <input asp-for="NMI_number" type="text" class="form-control">
+                    <span asp-validation-for="NMI_number"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="UsedForContract">Used For Contract:</label>
+                    <input asp-for="UsedForContract" type="checkbox" class="form-control">
+                    <span asp-validation-for="UsedForContract"></span>
+                </div>
+            </div>
+            <br>
+            <div class="col-md-12 col-lg-12 col-xs-12">
+                <button type="submit" class="btn btn-warning">Submit</button>
+                <div>@ViewBag.UserMessage</div>
+            </div>
+        </form>
+    </div>

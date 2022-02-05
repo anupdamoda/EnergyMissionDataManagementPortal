@@ -1,0 +1,66 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<Contract>
+<center><h2>Contract Management</h2></center>
+<a asp-controller="App" asp-action="Home"> &lt; Go Back</a>
+<br />
+<br />
+<p>Contract Count: @Model.Count()</p>
+<button class="btn btn-dark"><a asp-controller="Contract" asp-action="NewContract" class="nav-link" style="color:aqua">Add Contract</a></button>
+<br />
+<br />
+<div>
+    <center>
+        <form asp-action="ContractManagement" method="get">
+            <div class="form-actions no-color">
+                <p>
+                    Search by <b>Contract ID</b> or <b>NMI</b> or <b>Order Number</b> or <b>Jurisdiction</b> or <b>Meter Type</b>: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                    <input type="submit" value="Search" class="btn btn-info" /> |
+                    <a asp-action="ContractManagement">Back to Full List</a>
+                </p>
+            </div>
+        </form>
+        <table class="table table-striped table-bordered center">
+            <thead class="thead-dark">
+                <tr>
+                    <th> Contract ID </th>
+                    <th> NMI (National Meter Identifier) </th>
+                    <th> Order Number </th>
+                    <th> PRN (Payment Reference Number) </th>
+                    <th> Jurisdiction </th>
+                    <th> Meter Type </th>
+                    <th> Meter Serial Number </th>
+                    <th> Last Updated by</th>
+                    <th> Created on/at </th>
+                    <th> Updated on/at </th>
+                    <th style="color:darkcyan"> Update </th>
+                    <th style="color:darkcyan"> Delete </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                <tr>
+                    <td>  @p.contract_number </td>
+                    <td>  @p.nmi_number</td>
+                    <td>  @p.ordernumber </td>
+                    <td>  @p.paymentreferencenumber </td>
+                    <td>  @p.jurisdiction </td>
+                    <td>  @p.metertype </td>
+                    <td>  @p.meterserialno </td>
+                    <td>  @p.lastupdatedby </td>
+                    <td>  @p.created_at </td>
+                    <td>  @p.updated_at</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = p.contract_id })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = p.contract_id })
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </center>
+</div>

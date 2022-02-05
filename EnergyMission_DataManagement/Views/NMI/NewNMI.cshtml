@@ -1,0 +1,74 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model NewNMIViewModel
+@{
+    ViewBag.Title = "New NMI Page";
+}
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="col-md-6 offset-md-3">
+    <div class="card card-body">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="NMI">National Meter Identifier (NMI)</label>
+                    <input asp-for="NMI" type="text" class="form-control">
+                    <span asp-validation-for="NMI"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="Jusridiction">Jurisdiction:</label>
+                    <input asp-for="Jusridiction" type="text" class="form-control">
+                    <span asp-validation-for="Jusridiction"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="Distributor">Distributor:</label>
+                    <input asp-for="Distributor" type="text" class="form-control">
+                    <span asp-validation-for="Distributor"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="MeterType">Meter Type:</label>
+                    <input asp-for="MeterType" type="text" class="form-control">
+                    <span asp-validation-for="MeterType"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="NSRD">Next Scheduled Read Date:</label>
+                    <input asp-for="NSRD" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control">
+                    <span asp-validation-for="NSRD"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="MeterSerialNumber">Meter Serial Number:</label>
+                    <input asp-for="MeterSerialNumber" type="text" class="form-control">
+                    <span asp-validation-for="MeterSerialNumber"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-lg-6 col-xs-12">
+                    <label asp-for="UsedForContract">Used For Contract:</label>
+                    <input asp-for="UsedForContract" type="checkbox" class="form-control">
+                    <span asp-validation-for="UsedForContract"></span>
+                </div>
+            </div>
+            <br>
+            <div class="col-md-12 col-lg-12 col-xs-12">
+                <button type="submit" class="btn btn-warning">Submit</button>
+                <div>@ViewBag.UserMessage</div>
+            </div>
+        </form>
+    </div>

@@ -1,0 +1,5 @@
+﻿{
+    "ConnectionStrings": {
+        "EnergyMissionConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=EnergyPortalDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+}

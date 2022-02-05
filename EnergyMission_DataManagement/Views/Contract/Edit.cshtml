@@ -1,0 +1,74 @@
+﻿@model Contract
+@{
+    ViewBag.Title = "Edit";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Contract</h2>
+
+@using (Html.BeginForm())
+{
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.contract_id)
+
+<div class="form-group">
+    <b>  @Html.Label("Contract Number:") </b>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.contract_number, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.contract_number, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+    <div class="form-group">
+        <b>  @Html.Label("NMI Number:") </b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nmi_number, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nmi_number, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <b>  @Html.Label("Jurisdiction:") </b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.jurisdiction, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.jurisdiction, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <b>  @Html.Label("Meter Type") </b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.metertype, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.metertype, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <b>  @Html.Label("Order Number") </b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ordernumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ordernumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <b>  @Html.Label("Payment Reference Number") </b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.paymentreferencenumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.paymentreferencenumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-info" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ContractManagement")
+</div>

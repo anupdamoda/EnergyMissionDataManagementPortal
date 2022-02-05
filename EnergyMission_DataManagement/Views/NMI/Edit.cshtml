@@ -1,0 +1,82 @@
+﻿@model NMIs
+@{
+    ViewBag.Title = "Edit";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit NMI</h2>
+
+@using (Html.BeginForm())
+{
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.nmi_id)
+
+<div class="form-group">
+    <b> @Html.Label("Nmi (National Meter Identifier):")</b>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.nmi_number, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.nmi_number, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <b> @Html.Label("Jurisdiction:") </b>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.jurisdiction, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.jurisdiction, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+    <div class="form-group">
+        <b>  @Html.Label("Distributor:") </b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.distributor, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.distributor, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <b>@Html.Label("Meter Type:")</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.metertype, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.metertype, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <b> @Html.Label("NSRD:")</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nsrd, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nsrd, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <b> @Html.Label("Meter Serial Number:")</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.meterserialno, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.meterserialno, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <b> @Html.Label("Used For Contract? :")</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.usedforcontract, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.usedforcontract, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-info" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "NMIManagement")
+</div>
