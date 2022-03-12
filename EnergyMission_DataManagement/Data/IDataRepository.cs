@@ -13,7 +13,9 @@ namespace EnergyMission_DataManagement.Data
         IEnumerable<Contract> GetAllContracts();
         IEnumerable<CustAccntCode> GetAllCACs();
         IEnumerable<IdentityUser> GetAllUsers();
+        IEnumerable<IdentityRole> GetAllRoles();
         IEnumerable<OperationsHistory> GetAllOpsHists();
+        //IEnumerable<IdentityUserRole> GetAllUserRoles();
         void AddEntity(object model);
         void RemoveEntity(object model);
         bool SaveAll();

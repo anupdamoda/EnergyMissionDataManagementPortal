@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EnergyMission_DataManagement.Data.Entities;
 using EnergyMission_DataManagement.ViewModels;
+using Fluent.Infrastructure.FluentModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ namespace EnergyMission_DataManagement.Data
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<CustAccntCode> CACs { get; set; }
         public DbSet<OperationsHistory> OpsHists { get; set; }
+        
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
