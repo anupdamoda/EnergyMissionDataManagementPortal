@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EnergyMission_DataManagement.Data.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace EnergyMission_DataManagement.Data
 {
@@ -11,11 +12,16 @@ namespace EnergyMission_DataManagement.Data
 	{
         private readonly DataEnergyContext _ctx;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public DataRepository(DataEnergyContext ctx, UserManager<IdentityUser> userManager)
+
+
+        public DataRepository(DataEnergyContext ctx, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _ctx = ctx;
             _userManager = userManager;
+            _roleManager = roleManager;
+          
         }
 
         public IEnumerable<NMIs> GetAllNMIs()
@@ -46,6 +52,20 @@ namespace EnergyMission_DataManagement.Data
                 .ToList();
 
         }
+
+        public IEnumerable<IdentityRole> GetAllRoles()
+        {
+
+            return _ctx.Roles
+                .ToList();
+
+        }
+
+        //public IEnumerable<IdentityUserRole<IdentityUser>> GetAllUserRoles()
+        //{
+        //    return _ctx.UserRoles
+        //        .ToArray();
+        //}
 
         public IEnumerable<OperationsHistory> GetAllOpsHists()
         {
