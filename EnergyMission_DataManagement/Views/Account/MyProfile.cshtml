@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "My Profile Page";
+}
+@model Microsoft.AspNetCore.Identity.IdentityUser
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <b> @Html.Label("User Name:")</b>
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.UserName)
+        </div>
+        <b> @Html.Label("Locked Out:")</b>
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.LockoutEnabled)
+        </div>
+        <b> @Html.Label("Phone Number:")</b>
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
+        </div>
+        <b> @Html.Label("Email Id:")</b>
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+    </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "NMIManagement")
+</div>

@@ -26,7 +26,9 @@
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item"><a asp-controller="Account" asp-action="Logout" class="nav-link">Logout</a></li>
+                            <li class="nav-item"><a asp-controller="Account" asp-action="Logout" class="nav-link text-dark">Logout</a></li>
+                            <li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</li>
+                            <li class="nav-item" id="my-Profile"><a asp-controller="Account" asp-action="MyProfile" class="btn btn-outline-info">My Profile&nbsp;<i class="fas fa-user"></i></a></li>
                         }
                         else
                         {

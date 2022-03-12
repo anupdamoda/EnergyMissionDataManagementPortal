@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using EnergyMission_DataManagement.Data;
 
 namespace EnergyMission_DataManagement.Controllers
 {
@@ -20,6 +21,7 @@ namespace EnergyMission_DataManagement.Controllers
         private readonly ILogger<AccountController> _logger;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IDataRepository _repository;
 
 
         public AccountController(ILogger<AccountController> logger,
@@ -85,6 +87,20 @@ namespace EnergyMission_DataManagement.Controllers
         public IActionResult NewRegistration()
         {
             return View();
+        }
+
+        //public async Task<IActionResult> MyProfileAsync()
+        //{
+        //    var user = await _userManager.GetUserAsync(User);
+        //    return View(user);
+        //}
+
+        public async Task<IActionResult> MyProfileAsync(string Id)
+        {
+            //var usr = _repository.GetAllUsers().Where(s => s.Id == Id).FirstOrDefault();
+            var user = await _userManager.GetUserAsync(User);
+            //var usr = _userManager.Users.Where(s => s.Id == Id).FirstOrDefault();
+            return View(user);
         }
 
         [HttpPost]
