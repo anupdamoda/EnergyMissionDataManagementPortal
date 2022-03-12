@@ -86,3 +86,7 @@ body > div > main > div > form > div > p:nth-child(1){
 body > div{
     margin: 0px;
 }
+
+#my-Profile{
+    margin-right: 0;
+}
