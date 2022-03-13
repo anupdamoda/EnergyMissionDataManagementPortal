@@ -12,6 +12,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using EnergyMission_DataManagement.Data;
+using Microsoft.EntityFrameworkCore;
+using static Fluent.Infrastructure.FluentController.ManageController;
+using Microsoft.AspNet.Identity;
+using IdentityResult = Microsoft.AspNetCore.Identity.IdentityResult;
+//using Microsoft.AspNet.Identity;
 
 namespace EnergyMission_DataManagement.Controllers
 {
@@ -20,13 +25,13 @@ namespace EnergyMission_DataManagement.Controllers
     {
         private readonly ILogger<AccountController> _logger;
         private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly Microsoft.AspNetCore.Identity.UserManager<IdentityUser> _userManager;
         private readonly IDataRepository _repository;
 
 
         public AccountController(ILogger<AccountController> logger,
             SignInManager<IdentityUser> signInManager,
-            UserManager<IdentityUser> userManager,
+            Microsoft.AspNetCore.Identity.UserManager<IdentityUser> userManager,
             IConfiguration config)
         {
             _logger = logger;
@@ -89,19 +94,6 @@ namespace EnergyMission_DataManagement.Controllers
             return View();
         }
 
-        //public async Task<IActionResult> MyProfileAsync()
-        //{
-        //    var user = await _userManager.GetUserAsync(User);
-        //    return View(user);
-        //}
-
-        public async Task<IActionResult> MyProfileAsync(string Id)
-        {
-            //var usr = _repository.GetAllUsers().Where(s => s.Id == Id).FirstOrDefault();
-            var user = await _userManager.GetUserAsync(User);
-            //var usr = _userManager.Users.Where(s => s.Id == Id).FirstOrDefault();
-            return View(user);
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -123,5 +115,51 @@ namespace EnergyMission_DataManagement.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "App");
         }
+
+        public async Task<IActionResult> MyProfileAsync(string Id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            return View(user);
+        }
+
+       
+        //// Get View using this Method
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        //
+        //Save Details of New Password using Identity
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model, IdentityUser user)
+        {
+           
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var resultuser = await _userManager.GetUserAsync(User);
+
+            var result = await _userManager.ChangePasswordAsync(resultuser, model.OldPassword, model.NewPassword);
+            if (result.Succeeded)
+            {
+                var user1 = await _userManager.FindByIdAsync(user.Id);
+                if (user1 != null)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                }
+                return RedirectToAction("PwdChangedSuccess","Account");
+            }
+            
+            return View(model);
+        }
+        public ActionResult PwdChangedSuccess()
+        {
+            return View();
+        }
+
     }
 }

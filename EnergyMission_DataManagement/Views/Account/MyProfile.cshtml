@@ -11,9 +11,9 @@
 
 @using (Html.BeginForm())
 {
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
         <b> @Html.Label("User Name:")</b>
@@ -34,14 +34,8 @@
         </div>
     </div>
 
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-info" />
-            </div>
-        </div>
-    </div>
+    <button class="btn btn-light"><a asp-controller="Account" asp-action="ChangePassword" class="nav-link" style="color:lightseagreen; font-size:15px; font-weight:bold">Change Password &nbsp;<i class="fas fa-users"></i></a></button>
+</div>
 }
 
 <div>
