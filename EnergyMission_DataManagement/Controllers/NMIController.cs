@@ -1,20 +1,22 @@
 ﻿using EnergyMission_DataManagement.Data;
 using EnergyMission_DataManagement.Data.Entities;
 using EnergyMission_DataManagement.ViewModels;
-using EnergyMission_DataManagement.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
 
 namespace AceSchoolPortal.Controllers
 {
     [Authorize]
-    
+
     public class NMIController : Controller
     {
         private readonly IDataRepository _repository;
@@ -28,15 +30,51 @@ namespace AceSchoolPortal.Controllers
             _userManager = userManager;
         }
 
+        [HttpGet]
         [Authorize(Roles = "Administrator,SuperAdmin")]
         public IActionResult NewNMI()
         {
+            #region ViewBag
+            List<SelectListItem> Jurisdiction = new List<SelectListItem>() {
+        new SelectListItem {
+            Text = "VIC", Value = "VIC"
+        },
+        new SelectListItem {
+            Text = "NSW", Value = "NSW"
+        },
+        new SelectListItem {
+            Text = "QLD", Value = "QLD"
+        },
+        new SelectListItem {
+            Text = "SA", Value = "SA"
+        },
+        new SelectListItem {
+            Text = "TAS", Value = "TAS"
+        },
+        new SelectListItem {
+            Text = "NT", Value = "NT"
+        },
+    };
+            ViewBag.jurisdiction = Jurisdiction;
+            #endregion
+
+            #region ViewBag
+            List<SelectListItem> MeterType = new List<SelectListItem>() {
+        new SelectListItem {
+            Text = "Smart", Value = "Smart"
+        },
+        new SelectListItem {
+            Text = "Basic", Value = "Basic"
+        },
+    };
+            ViewBag.metertype = MeterType;
+            #endregion
             return View();
         }
 
         public IActionResult NMIManagement(string nmiString, string jurString, string meterTypeString, DateTime nsrdDate, string UsedCheck)
         {
-           
+
             var results = _repository.GetAllNMIs();
 
             ViewData["nmiFilter"] = nmiString;
@@ -80,7 +118,7 @@ namespace AceSchoolPortal.Controllers
                 {
                     results = results.Where(s => s.usedforcontract.Equals(false));
                 }
-                
+
             }
             return View(results.ToList());
         }
@@ -90,19 +128,16 @@ namespace AceSchoolPortal.Controllers
         {
             // This will look for the current user claim ( current logged in user )
             var userId = User.FindFirstValue(ClaimTypes.Name);
-
             var exitNMI = _repository.GetAllNMIs();
 
-          
-            
             if (ModelState.IsValid)
             {
                 var newNMI = new NMIs()
                 {
                     nmi_number = model.NMI,
-                    jurisdiction = model.Jusridiction,
+                    jurisdiction = model.SelectedJuris,
                     distributor = model.Distributor,
-                    metertype = model.MeterType,
+                    metertype = model.SelectedMeterType,
                     nsrd = model.NSRD,
                     meterserialno = model.MeterSerialNumber,
                     usedforcontract = model.UsedForContract,
@@ -158,7 +193,7 @@ namespace AceSchoolPortal.Controllers
             //update nmi in DB using EntityFramework in real-life application
             //update list by removing old user and adding updated user for demo purpose
             var resultnmi = _repository.GetAllNMIs().Where(s => s.nmi_id == nmi.nmi_id).FirstOrDefault();
-            
+
             // created date should remain the same
             nmi.created_at = resultnmi.created_at;
             // edited/updated date should be updated to current date (date of the edit)
@@ -222,5 +257,6 @@ namespace AceSchoolPortal.Controllers
         {
             return View();
         }
+
     }
 }

@@ -14,6 +14,8 @@ namespace EnergyMission_DataManagement.Data
         IEnumerable<CustAccntCode> GetAllCACs();
         IEnumerable<IdentityUser> GetAllUsers();
         IEnumerable<IdentityRole> GetAllRoles();
+        IEnumerable<EnergyMissionConnectionString> GetAllJurisdictions();
+        IEnumerable<MeterType> GetAllMeterType();
         IEnumerable<OperationsHistory> GetAllOpsHists();
         //IEnumerable<IdentityUserRole> GetAllUserRoles();
         void AddEntity(object model);

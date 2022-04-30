@@ -7,13 +7,13 @@ namespace EnergyMission_DataManagement.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class ApplicationUser : IMigrationMetadata
+    public sealed partial class InitialDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ApplicationUser));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "202202090912380_ApplicationUser"; }
+            get { return "202204220706362_Initial-DB"; }
         }
         
         string IMigrationMetadata.Source
