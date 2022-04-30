@@ -4,6 +4,7 @@
 @{
 }
 @model NewNMIViewModel
+
 @{
     ViewBag.Title = "New NMI Page";
 }
@@ -26,7 +27,7 @@
             <div class="form-group">
                 <div class="col-md-4 col-lg-6 col-xs-12">
                     <label asp-for="Jusridiction">Jurisdiction:</label>
-                    <input asp-for="Jusridiction" type="text" class="form-control">
+                    @Html.DropDownListFor(m => m.SelectedJuris, (IEnumerable<SelectListItem>)ViewBag.jurisdiction, "Select Jurisdiction")
                     <span asp-validation-for="Jusridiction"></span>
                 </div>
             </div>
@@ -40,7 +41,7 @@
             <div class="form-group">
                 <div class="col-md-4 col-lg-6 col-xs-12">
                     <label asp-for="MeterType">Meter Type:</label>
-                    <input asp-for="MeterType" type="text" class="form-control">
+                    @Html.DropDownListFor(m => m.SelectedMeterType, (IEnumerable<SelectListItem>)ViewBag.MeterType, "Select MeterType")
                     <span asp-validation-for="MeterType"></span>
                 </div>
             </div>

@@ -73,7 +73,21 @@ namespace EnergyMission_DataManagement.Data
                 .OrderByDescending(u => u.updated_at)
                 .ToList();
         }
-  
+
+        public IEnumerable<EnergyMissionConnectionString> GetAllJurisdictions()
+        {
+            return _ctx.jurisdictions
+                .OrderBy(u => u.jurisdctn)
+                .ToList();
+        }
+
+        public IEnumerable<MeterType> GetAllMeterType()
+        {
+            return _ctx.meterTypes
+                .OrderBy(u => u.MeterTyp)
+                .ToList();
+        }
+
 
         public void AddEntity(object model)
         {

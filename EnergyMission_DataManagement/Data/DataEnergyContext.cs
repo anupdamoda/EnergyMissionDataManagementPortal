@@ -23,6 +23,8 @@ namespace EnergyMission_DataManagement.Data
         public DbSet<CustAccntCode> CACs { get; set; }
         public DbSet<OperationsHistory> OpsHists { get; set; }
         
+        public DbSet<EnergyMissionConnectionString> jurisdictions { get; set; }
+        public DbSet<MeterType> meterTypes { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +37,10 @@ namespace EnergyMission_DataManagement.Data
                 .HasKey(h => new { h.CAC_id });
             modelBuilder.Entity<OperationsHistory>()
                 .HasKey(h => new { h.operation_id });
+            modelBuilder.Entity<EnergyMissionConnectionString>()
+                .HasKey(h => new { h.jur_id });
+            modelBuilder.Entity<MeterType>()
+                .HasKey(h => new { h.meter_type_id });
         }
     }
 }
