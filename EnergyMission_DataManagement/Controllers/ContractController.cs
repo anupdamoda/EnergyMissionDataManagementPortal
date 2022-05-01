@@ -23,6 +23,7 @@ namespace AceSchoolPortal.Controllers
             this.db = db;
         }
 
+        [Authorize(Roles = "Administrator,SuperAdmin")]
         public IActionResult NewContract()
         {
             return View();
@@ -89,6 +90,8 @@ namespace AceSchoolPortal.Controllers
             return RedirectToAction("ContractManagement");
 
         }
+
+        [Authorize(Roles = "Administrator,SuperAdmin")]
         public IActionResult Edit(int id)
         {
             //here, get the user from the database in the real application

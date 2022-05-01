@@ -219,7 +219,6 @@ namespace AceSchoolPortal.Controllers
         }
 
         [Authorize(Roles = "SuperAdmin")]
-        [AccessDeniedAuthorize]
         public IActionResult Delete(int id)
         {
             //here, get the student from the database in the real application
@@ -258,5 +257,16 @@ namespace AceSchoolPortal.Controllers
             return View();
         }
 
+        //public class MyAuthorizeAttribute : AuthorizeAttribute
+        //{
+        //    protected void HandleUnauthorizedRequest(System.Web.Mvc.AuthorizationContext filterContext)
+        //    {
+        //        var viewResult = new ViewResult
+        //        {
+        //            ViewName = "~/Views/Account/Login.cshtml"
+        //        };
+        //        //filterContext.Result = viewResult;
+        //    }
+        //}
     }
 }
