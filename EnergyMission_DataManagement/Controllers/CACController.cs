@@ -24,6 +24,7 @@ namespace AceSchoolPortal.Controllers
             this.db = db;
         }
 
+        [Authorize(Roles = "Administrator,SuperAdmin")]
         public IActionResult NewCAC()
         {
             return View();
@@ -44,6 +45,7 @@ namespace AceSchoolPortal.Controllers
             return View(results.ToList());
         }
 
+        [Authorize(Roles = "Administrator,SuperAdmin")]
         [HttpPost]
         public IActionResult NewCAC(CACViewModel model)
         {
@@ -78,6 +80,7 @@ namespace AceSchoolPortal.Controllers
             return RedirectToAction("CACManagement");
 
         }
+        [Authorize(Roles = "Administrator,SuperAdmin")]
         public IActionResult Edit(int id)
         {
             //here, get the user from the database in the real application
