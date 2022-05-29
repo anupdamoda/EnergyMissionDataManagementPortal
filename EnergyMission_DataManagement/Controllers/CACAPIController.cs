@@ -61,8 +61,17 @@ namespace AceSchoolPortal.Controllers
                     created_at = DateTime.Now,
                     updated_at = DateTime.Now
                 };
+                var newOps = new OperationsHistory()
+                {
+                    nmi_number = model.CAC_number,
+                    operation = "Insert",
+                    lastupdatedby = "Automation_API",
+                    created_at = DateTime.Now,
+                    updated_at = DateTime.Now
+                };
 
                 _repository.AddEntity(newCAC);
+                _repository.AddEntity(newOps);
                 _repository.SaveAll();
 
                 return Ok();

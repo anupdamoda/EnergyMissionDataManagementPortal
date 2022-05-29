@@ -145,7 +145,6 @@ namespace AceSchoolPortal.Controllers
                     created_at = DateTime.Now,
                     updated_at = DateTime.Now
                 };
-
                 var newOps = new OperationsHistory()
                 {
                     nmi_number = model.nmi_number,
