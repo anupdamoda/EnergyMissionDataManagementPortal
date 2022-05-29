@@ -11,9 +11,9 @@ namespace EnergyMission_DataManagement.ViewModels
 {
     public class NewNMIViewModel
     {
-        public int NMI_id { get; set; }
+        public int nmi_id { get; set; }
         [Required]
-        public string NMI { get; set; }
+        public string nmi_number { get; set; }
         public string Jusridiction { get; set; }
         public SelectList Juris { get; set; }
         public string SelectedJuris { get; set; }

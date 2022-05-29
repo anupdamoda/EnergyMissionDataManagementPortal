@@ -134,7 +134,7 @@ namespace AceSchoolPortal.Controllers
             {
                 var newNMI = new NMIs()
                 {
-                    nmi_number = model.NMI,
+                    nmi_number = model.nmi_number,
                     jurisdiction = model.SelectedJuris,
                     distributor = model.Distributor,
                     metertype = model.SelectedMeterType,
@@ -148,7 +148,7 @@ namespace AceSchoolPortal.Controllers
 
                 var newOps = new OperationsHistory()
                 {
-                    nmi_number = model.NMI,
+                    nmi_number = model.nmi_number,
                     operation = "Insert",
                     lastupdatedby = userId,
                     created_at = DateTime.Now,
@@ -156,7 +156,7 @@ namespace AceSchoolPortal.Controllers
                 };
 
                 // check if data (NMI) exists in the database
-                bool nmiExists = _repository.GetAllNMIs().Any(s => s.nmi_number.Equals(model.NMI));
+                bool nmiExists = _repository.GetAllNMIs().Any(s => s.nmi_number.Equals(model.nmi_number));
 
                 if (nmiExists)
                 {
