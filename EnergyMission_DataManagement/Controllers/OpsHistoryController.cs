@@ -51,7 +51,7 @@ namespace AceSchoolPortal.Controllers
             {
                 var newNMI = new NMIs()
                 {
-                    nmi_number = model.NMI,
+                    nmi_number = model.nmi_number,
                     jurisdiction = model.Jusridiction,
                     distributor = model.Distributor,
                     metertype = model.MeterType,

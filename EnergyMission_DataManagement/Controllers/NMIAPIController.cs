@@ -42,5 +42,40 @@ namespace AceSchoolPortal.Controllers
                 return BadRequest("Failed to get nmis");
             }
         }
+
+        [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public ActionResult NMIAPI(NewNMIViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest("Invalid data.");
+
+                var newNMI = new NMIs()
+                {
+                    nmi_number = model.nmi_number,
+                    jurisdiction = model.Jusridiction,
+                    metertype = model.MeterType,
+                    distributor = model.Distributor,
+                    meterserialno = model.MeterSerialNumber,
+                    nsrd = model.NSRD,
+                    usedforcontract = model.UsedForContract,
+                    lastupdatedby = "Automation_API",
+                    created_at = DateTime.Now,
+                    updated_at = DateTime.Now
+                };
+
+                _repository.AddEntity(newNMI);
+                _repository.SaveAll();
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Failed to get nmi");
+            }
+        }
     }
 }
